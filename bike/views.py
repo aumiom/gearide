@@ -12,7 +12,7 @@ from bike.authentication import create_user, login_view
 def index_page(request):
     message = ""
     print "request ajax:::::::::::::::::::" + str(request.is_ajax())
-    print "request body:::::::::::::::::::" + request.body
+    # print "request body:::::::::::::::::::" + request.body
     print "request method:::::::::::::::::" + request.method
     if request.method == 'POST':
         if request.is_ajax() and "firstname" in request.body:

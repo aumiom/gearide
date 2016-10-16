@@ -15,6 +15,9 @@
     <meta charset="UTF-8">
     <title>Gearide | Welcome to Gearide :)</title>
     <!--<script type="text/javascript" src="/static/js/aos.js"></script>-->
+     <meta name="google-signin-client_id" content="210934651788-6i85jbqg6u8bsnvoh62p65h2rf71l7ru.apps.googleusercontent.com">
+    
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </head>
 <body>
 
@@ -32,13 +35,11 @@
       testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      console.log('Please log into this app.');
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      console.log('Please log into Facebook.');
     }
   }
 
@@ -93,10 +94,37 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+      console.log('Thanks for logging in, ' + response.name);
     });
   }
+  
+  function fb_login(){
+    FB.login(function(response) {
+      if (response.authResponse) {
+       console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me', function(response) {
+         console.log('Good to see you, ' + response.name + '.');
+       });
+      } else {
+       console.log('User cancelled login or did not fully authorize.');
+      }
+  });
+  }
+  
+  function fb_logout() {
+    FB.getLoginStatus(function(response) {
+        if (response && response.status === 'connected') {
+    
+            FB.logout(function(response) {
+                document.location.reload();
+            });
+        } else if (response.status === 'not_authorized') 
+            {
+                 FB.logout(function(response) {
+                document.location.reload();
+                });
+            }
+    });}
 </script>
 
 <div class="fullscreen-bg">
@@ -121,11 +149,11 @@
 
             <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dwnld"><a href="#app">Download App</a></li><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
+                    <li class="dwnld"><a href="#app">Download App</a></li>
                     <li><a data-toggle="modal" data-target="#signupModal" >Sign Up</a></li>
                     <li><a data-toggle="modal" data-target="#loginModal" >Log In</a></li>
+                     <li><a href="#" onclick="signOut();">Sign out</a></li>
+                    <li><a href="#" onclick="fb_logout()">fbSign out</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -142,11 +170,12 @@
                         {% csrf_token %}
                         <div class="">
                             <div class="">
-                                <button type="button" scope="public_profile,email" onlogin="checkLoginState();" class="btn fb partyLogin btn-primary btn-block">Continue with Facebook</button>
+                                <button type="button" onclick="fb_login()" scope="public_profile,email" onlogin="checkLoginState();" class="btn fb partyLogin btn-primary btn-block">Sign Up with Facebook</button>
                             </div>
                             <br>
                             <div class="">
-                                <button type="button" class="btn partyLogin btn-danger btn-block">Continue with Google+</button>
+                              <div class="g-signin2" style="display: none;" data-onsuccess="onSignIn"></div>
+                                <button type="button" onclick="signIn();"  data-onsuccess="onSignIn" class="btn partyLogin btn-danger btn-block">Sign Up with Google+</button>
                             </div>
                         </div>
                         <hr />
@@ -190,12 +219,13 @@
                         {% csrf_token %}
                         <div class="">
                             <div class="">
-                                <button type="button" class="btn partyLogin btn-primary btn-block">Facebook</button>
+                                <button type="button" onclick="fb_login()" scope="public_profile,email" onlogin="checkLoginState();" class="btn fb partyLogin btn-primary btn-block">Sign Up with Facebook</button>
                             </div>
                             <br/>
                             <div class="">
-                                <button type="button" class="btn partyLogin btn-danger btn-block">Google+</button>
-                            </div>
+                               <div class="g-signin2" style="display: none;" data-onsuccess="onSignIn"></div>
+                              <button type="button" onclick="signIn();"  data-onsuccess="onSignIn" class="btn partyLogin btn-danger btn-block">Sign Up with Google+</button>
+                           </div>
                         </div>
                         <hr/>
                         <div class="form-group">
@@ -669,5 +699,38 @@
 
 
     </script>
+        <script>
+      function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+}
+    </script>
+    <script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+  
+  function signIn() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signIn().then(function () {
+      console.log('User signed in.');
+      if (auth2.isSignedIn.get()) {
+  var profile = auth2.currentUser.get().getBasicProfile();
+  console.log('ID: ' + profile.getId());
+  console.log('Full Name: ' + profile.getName());
+  console.log('Given Name: ' + profile.getGivenName());
+  console.log('Family Name: ' + profile.getFamilyName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+}
+    });
+  }
+</script>
 </body>
 </html>
