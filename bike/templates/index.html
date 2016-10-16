@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="bikes, bike, moto,motor, motorcycle, motorcycles, rent, tour, super bike, super bikes, rent bike, rental, borrow, day, day rent, day rental">
+    <meta name="description" content="Gear up your ride.">
+    <link rel="icon" type="image/png" href="/static/images/icon.png" title="GeaRide">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/aos.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <meta charset="UTF-8">
+    <title>Gearide | Welcome to Gearide :)</title>
+    <!--<script type="text/javascript" src="/static/js/aos.js"></script>-->
+</head>
+<body>
+
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '156775824779414',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.5' // use graph api version 2.5
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>
+
+<div class="fullscreen-bg">
+    <video loop muted autoplay poster="/static/images/videoframe.jpg" class="fullscreen-bg__video">
+        <source src="/static/video/ktm.webm" type="video/webm">
+        <source src="/static/video/ktm.mp4" type="video/mp4">
+        <source src="/static/video/ktm.ogv" type="video/ogg">
+    </video>
+</div>   
+<div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.gearide.com"><img src="/static/images/logo1.png" alt="" class="img-responsive"></a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dwnld"><a href="#app">Download App</a></li><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+                    <li><a data-toggle="modal" data-target="#signupModal" >Sign Up</a></li>
+                    <li><a data-toggle="modal" data-target="#loginModal" >Log In</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+    <!--modal signup-->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="">
+                            <div class="">
+                                <button type="button" scope="public_profile,email" onlogin="checkLoginState();" class="btn fb partyLogin btn-primary btn-block">Continue with Facebook</button>
+                            </div>
+                            <br>
+                            <div class="">
+                                <button type="button" class="btn partyLogin btn-danger btn-block">Continue with Google+</button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <input id="id-firstname-signup" type="text" class="form-control input-lg" style="background-image: url(images/inputBg.gif);background-repeat: no-repeat;background-position: right 11px;" placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <input id="id-lastname-signup" type="text" class="form-control input-lg" style="background-image: url(images/inputBg.gif);background-repeat: no-repeat;background-position: right 11px;" placeholder="Last name">
+                        </div>
+                        <div class="form-group">
+                            <input id="id-email-signup" type="email" class="form-control input-lg" placeholder="Email Id">
+                        </div>
+                        <div class="form-group">
+                            <input id="id-password-signup" type="password" class="form-control input-lg" placeholder="Password">
+                        </div>
+                        <div class="smallText">
+                            By signing up, I agree to Gearide's <a href="#">Terms of Service</a> and <a href="#" data-popup="true">Privacy Policy</a>.
+                        </div>
+                        <div class="form-group">
+                            <button id="id-signup" class="btn btn-primary btn-lg btn-learn btn-block">Sign Up</button>
+                        </div>
+                        <hr/>
+                        <div class="smallText">
+                            Already a Member?<a data-toggle="modal" data-dismiss="modal" data-target="#loginModal">Log In</a>
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span><span class="sr-only">Close</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--/modal-->
+    <!--modal login-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" method="post">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="" method="post" action="">
+                        {% csrf_token %}
+                        <div class="">
+                            <div class="">
+                                <button type="button" class="btn partyLogin btn-primary btn-block">Facebook</button>
+                            </div>
+                            <br/>
+                            <div class="">
+                                <button type="button" class="btn partyLogin btn-danger btn-block">Google+</button>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <input type="email" id="id-email-login" class="form-control input-lg"  placeholder="Email address" >
+                        </div>
+                        <div class="form-group">
+                            <input id="id-password-login" type="password" class="form-control input-lg" placeholder="Password">
+                        </div>
+                        <div class="smallText">
+                            <label for="rememberMe" class=" ">
+                              <input type="checkbox" name="remember_me" id="rememberMe" value="true" class="remember_me">
+                              Remember me
+                            </label>
+                            <a href="#" class="forgot-password pull-right">Forgot password?</a>
+                        </div>
+                        <div class="form-group"1>
+                            <button class="btn btn-primary btn-lg btn-learn btn-block" id="id-login">Log In</button>
+                        </div>
+                        <hr/>
+                        <div class="smallText">
+                            Don't have an account?<a data-toggle="modal" data-dismiss="modal" data-target="#signupModal ">Sign Up</a>
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span><span class="sr-only">Close</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--/modal-->
+    <div class="book">
+        <div class="container">
+            <div class="intro">
+                <h1>Gear Up Your Ride!!</h1>
+                <p>Bike rentals made easy at your fingertips.</p>
+            </div>
+            <div class="booking row">
+                <div class="container">
+                    <form action="" class="form-horizontal col-lg-12"  role="form">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="form-group row bookwrap">
+                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                    <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                        <input class="form-control" size="16" type="text" placeholder="Start Time" value="" readonly>
+                                        <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="dtp_input1" value="" />
+                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                    <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                        <input class="form-control" size="16" type="text" placeholder="End Time" value="" readonly>
+                                        <span class="input-group-addon"><span class="fa fa-times"></span></span>
+                                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <input id="submit" type="submit" value="Search Bike">
+                                </div>
+                                <input type="hidden" id="dtp_input2" value="" /><br/>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!--why us starts-->
+<div id="whyus">
+    <div class="container">
+        <div class="row">
+            <h2 class="center">Why Us?</h2>
+            <br/>
+            <br/>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <div>
+                    <div data-aos="fade-up-right" data-aos-offset="100" data-aos-easing="ease-in-sine" class="col-lg-12 center animl">
+                        <img  class="img-responsive whyusimg" src="/static/images/whyus/discount.svg" alt="Cheapest Rates">
+                        <h4>Cheapest Rates</h4>
+                        <p>We offer the best price in the market</p>
+                    </div>
+                    <div data-aos="fade-up-right" data-aos-offset="100" data-aos-easing="ease-in-sine" class="col-lg-12 center animl">
+                        <img  class="img-responsive whyusimg" src="/static/images/whyus/tax.svg" alt="Tax & Insurance Included">
+                        <h4>Tax & Insurance Included</h4>
+                        <p>No hidden charges. All inclusive rates</p>
+                    </div>
+                    <div data-aos="fade-up-right" data-aos-offset="100" data-aos-easing="ease-in-sine" class="col-lg-12 center animl">
+                        <img  class="img-responsive whyusimg" src="/static/images/whyus/premium.svg" alt="Premium Rides">
+                        <h4>Premium Rides</h4>
+                        <p>Shift gears on our premiuim rides</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-offset="50" data-aos-easing="ease-in-sine" class="col-lg-4 col-md-4 col-sm-4 hidden-xs center">
+                <img src="/static/images/kaw.jpg" alt="Premium Gear">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <div>
+                    <div data-aos="fade-up-left" data-aos-offset="100" data-aos-easing="ease-in-sine"class="col-lg-12 center animr">
+                        <img  class="img-responsive whyusimg" src="/static/images/whyus/infinite.svg" alt="refun available">
+                        <h4>Unlimited KMs</h4>
+                        <p>Rent a bike with no limits on kilometer</p>
+                    </div>
+                    <div data-aos="fade-up-left" data-aos-offset="100" data-aos-easing="ease-in-sine"class="col-lg-12 center animr">
+                        <img class="img-responsive whyusimg" src="/static/images/whyus/doorstep.svg" alt="refun available">
+                        <h4>Doorstep Delivery</h4>
+                        <p>Now get your ride at your doorstep</p>
+                    </div>
+                    <div data-aos="fade-up-left" data-aos-offset="100" data-aos-easing="ease-in-sine"class="col-lg-12 center animr">
+                        <img  class="img-responsive whyusimg" src="/static/images//whyus/refund.svg" alt="refund available">
+                        <h4>Refundable Deposit</h4>
+                        <p>No or lowest deposit which is fully refundable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--why us ends-->
+<!--testimonials starts-->
+<section id="carousel">    				
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+                <div class="quote"><i class="fa fa-quote-left"></i></div>
+				<div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+				  <!-- Carousel indicators -->
+                  <ol class="carousel-indicators">
+				    <li data-target="#fade-quote-carousel" data-slide-to="0"></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="2" class="active"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
+				  </ol>
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+				    <div class="item">
+                        <div class="profile-circle"><img class="img-circle" src="/static/images/testimonials/user1.jpg" alt=""></div>
+				    	<blockquote>
+				    		<p>Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>	
+				    </div>
+				    <div class="item">
+                        <div class="profile-circle"><img class="img-circle" src="/static/images/testimonials/user1.jpg" alt=""></div>
+				    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+				    <div class="active item">
+                        <div class="profile-circle"><img class="img-circle" src="/static/images/testimonials/user1.jpg" alt=""></div>
+				    	<blockquote>
+				    		<p>Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle"><img class="img-circle" src="/static/images/testimonials/user1.jpg" alt=""></div>
+    			    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle"><img class="img-circle" src="/static/images/testimonials/user1.jpg" alt=""></div>
+    			    	<blockquote>
+				    		<p>Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle"><img class="img-circle" src="/static/images/testimonials/user1.jpg" alt=""></div>
+    			    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+				  </div>
+                  
+				</div>
+                <a class="left carousel-control" href="#fade-quote-carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#fade-quote-carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+			</div>							
+		</div>
+	</div>
+</section>
+<!--testimonials ends-->
+<!--app download starts-->
+<div id="app">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <br/><br/><br/>
+                <h2>STUNNING. <br/> FAST. <br/> RELIABLE.</h2>
+                <br>
+                <p>Gear up your ride on the go. Now Available on Android and IOS</p>
+                <br>         
+                   <div class="col-lg-12 appbtn">
+                        <a class="" href="https://play.google.com/">
+                            <img alt="play store button" src="/static/images/playstore.png">
+                        </a>
+                        <a class="" href="itunes.apple.com">
+                            <img  alt="app store button" class="fr" src="/static/images/appstore.png">
+                        </a>
+                   </div>
+                
+                <div class="col-lg-12">
+                    <a class="col-lg-6" id="iosapplink"href="#"></a>
+                    <a class="col-lg-6" id="iosapplink"href="#"></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs mobislide">
+                <div class="mauto">
+                    <img data-aos="fade-left" data-aos-offset="100" data-aos-easing="ease-in-sine" id="mobi" src="/static/images/mobi.png" alt="Download IOS App">
+                    <img data-aos="fade-left" data-aos-offset="100" data-aos-easing="ease-in-sine" id="moba" src="/static/images/moba.png" alt="Download Android App">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--app download ends-->
+<!--showcase starts-->
+<section id="showcase">    				
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 col-md-offset-1">
+                <div class="quote"><h1>All Type of Bikes</h1></div>
+				<div class="carousel slide" id="showcase-carousel" data-ride="carousel" data-interval="3000">
+				  <!-- Carousel indicators -->
+                  <ol class="carousel-indicators">
+				    <li data-target="#showcase-carousel" data-slide-to="0" class="active"></li>
+				    <li data-target="#showcase-carousel" data-slide-to="1"></li>
+				    <li data-target="#showcase-carousel" data-slide-to="2"></li>
+                    <li data-target="#showcase-carousel" data-slide-to="3"></li>
+                    <li data-target="#showcase-carousel" data-slide-to="4"></li>
+                    <li data-target="#showcase-carousel" data-slide-to="5"></li>
+				  </ol>
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+				    <div class="active item">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="/static/images/showcase/premium.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h2>Premium Rides</h2>
+                            <p>Enlighten yourself with the feeling of how it feels to drive the one, which drives all bike lovers crazy, with our premiuim rides.</p>
+                            <h4>Price starting at Rs. 80 / hr</h4>
+                        </div>	
+				    </div>
+				    <div class="item">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="/static/images/showcase/cruise.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h2>Cruiser</h2>
+                            <p>Have your hands held high, spine leaning back slightly to drive the most comfortable bikes out there. Riding this, you only feel like god.</p>
+                            <h4>Price starting at Rs. 80 / hr</h4>
+                        </div>
+				    </div>
+				    <div class=" item">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="/static/images/showcase/sport.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h2>Sports</h2>
+                            <p>Are you the type of guy who would rather live one day as a speedster rther than 4 days as a begger? If yes then these bikes are the answers to your prayers.</p>
+                            <h4>Price starting at Rs. 80 / hr</h4>
+                        </div>
+				    </div>
+                    <div class="item">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="/static/images/showcase/adventuresport.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h2>Adventure Sports</h2>
+                            <p>Designed for frequent short, moderately paced rides through relatively flat urban areas.</p>
+                            <h4>Price starting at Rs. 80 / hr</h4>
+                        </div>
+				    </div>
+                    <div class="item">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="/static/images/showcase/standard.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h2>City Street</h2>
+                            <p>General street or city purpose bikes to meet your usual requirement of travelling from one place to another in a city.</p>
+                            <h4>Price starting at Rs. 80 / hr</h4>
+                        </div>
+				    </div>
+                    <div class="item">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="/static/images/showcase/scooty.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h2>Scooties</h2>
+                            <p>Easy to ride with hassle free gear and a good storage compartment. Get ready to have a great picnic or an outing with your loved ones.</p>
+                            <h4>Price starting at Rs. 80 / hr</h4>
+                        </div>
+				    </div>
+				  </div>
+                  
+				</div>
+                <a class="left carousel-control" href="#showcase-carousel" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#showcase-carousel" role="button" data-slide="next">
+                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+			</div>							
+		</div>
+	</div>
+</section>
+<!--showcase ends-->
+<!--footer starts-->
+{% include "footer.html" %}
+<!--footer ends-->
+    
+    <script src="/static/js/aos.js" type="text/javascript"></script>
+    <script src="/static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    
+    <script>
+    AOS.init();
+  </script>
+    <script type="text/javascript">
+        $('.form_datetime').datetimepicker({
+            //language:  'fr',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1
+        });
+        $('.form_date').datetimepicker({
+            language:  'fr',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+        $('.form_time').datetimepicker({
+            language:  'fr',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 1,
+            minView: 0,
+            maxView: 1,
+            forceParse: 0
+        });
+    </script>
+    <script>
+        $(document).ready(function(){       
+            var scroll_pos = 0;
+            $(document).scroll(function() { 
+                scroll_pos = $(this).scrollTop();
+                if(scroll_pos > 20) {
+                    $(".navbar-default").css('background-color', 'rgba(255, 255, 255, .9)');
+                    $(".navbar-default").css('height', '58px');
+                    $(".navbar-default").css('box-shadow', 'rgba(0, 0, 0, 0.08) 0px  2px 2px');
+                    $(".navbar-brand>img").css('height', '30px');
+                    $(".navbar-default .navbar-nav>li> a").css('font-size', '9pt');
+                    $(".navbar-default .navbar-nav>li> a").css('color', '#4a4a4a');
+                    $('.navbar-brand>img').attr('src', '/static/images/logo.png');
+                    //$('.navbar-collapse.collapse.in .navbar-nav>li> a').css('color', '#4a4a4a');
+                } else {
+                    $(".navbar-default").css('background-color', 'rgba(0,0,0,.0)');
+                    $(".navbar-brand>img").css('height', '34px');
+                    $(".navbar-default").css('box-shadow', '0px 0px 0px #fff');
+                    $(".navbar-default .navbar-nav>li> a").css('font-size', '11pt');
+                    $(".navbar-default .navbar-nav>li> a").css('color', '#fff');
+                    $('.navbar-brand>img').attr('src', '/static/images/logo1.png');
+                    //$('.navbar-collapse.collapse.in .navbar-nav>li> a').css('color', '#4a4a4a');
+                }
+            });
+        });
+
+        function getCookie(c_name)
+        {
+            if (document.cookie.length > 0)
+            {
+                c_start = document.cookie.indexOf(c_name + "=");
+                if (c_start != -1)
+                {
+                    c_start = c_start + c_name.length + 1;
+                    c_end = document.cookie.indexOf(";", c_start);
+                    if (c_end == -1) c_end = document.cookie.length;
+                    return unescape(document.cookie.substring(c_start,c_end));
+                }
+            }
+            return "";
+         }
+
+
+        $(function () {
+            $.ajaxSetup({
+                headers: { "X-CSRFToken": getCookie("csrftoken") }
+            });
+        });
+
+
+
+
+
+        $('#id-signup').click(function(xhr) {
+
+            var user = {
+                firstname: $("#id-firstname-signup").val(),
+                lastname : $("#id-lastname-signup").val(),
+                email:$("#id-email-signup").val(),
+                password:$("#id-password-signup").val()
+            }
+            console.log(user);
+
+            $.ajax({
+                url: '',
+                method: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(user),
+                success: function(){
+                    alert("Success");
+                },
+
+                error: function(xhr){
+                    alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+                }
+            });
+      });
+
+
+
+       $('#id-login').click(function(xhr) {
+
+            var user = {
+                email: $("#id-email-login").val(),
+                password:$("#id-password-login").val()
+            }
+            console.log(user);
+
+            $.ajax({
+                url: '',
+                method: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(user),
+                success: function(){
+                    alert("Success");
+                },
+
+                error: function(xhr){
+                    alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+                }
+            });
+      });
+
+
+    </script>
+</body>
+</html>

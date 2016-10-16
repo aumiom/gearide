@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="bikes, bike, moto,motor, motorcycle, motorcycles, rent, tour, super bike, super bikes, rent bike, rental, borrow, day, day rent, day rental">
+    <meta name="description" content="Gear up your ride.">
+    <link rel="icon" type="image/png" href="/static/images/icon.png" title="GeaRide">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/aos.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <meta charset="UTF-8">
+    <title>Gearide | Welcome to Gearide :)</title>
+    <!--<script type="text/javascript" src="/static/js/aos.js"></script>-->
+</head>
+<body>  
+<div id="headerever">
+    <nav class="navbar navbar-default ever navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.gearide.com"><img src="/static/images/logo.png" alt="" class="img-responsive"></a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="cart"><a href="#app">Checkout <span class="badge"> 4</span></a></li>
+                    <li><a data-toggle="modal" data-target="#signupModal" >Sign Up</a></li>
+                    <li><a data-toggle="modal" data-target="#loginModal" >Log In</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+        
+            
+    </nav>
+    <!--modal signup-->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form >
+                        <div class="">
+                            <div class="">
+                                <button type="button" class="btn fb partyLogin btn-primary btn-block">Continue with Facebook</button>
+                            </div>
+                            <br>
+                            <div class="">
+                                <button type="button" class="btn partyLogin btn-danger btn-block">Continue with Google+</button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" style="background-image: url(images/inputBg.gif);background-repeat: no-repeat;background-position: right 11px;" placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" style="background-image: url(images/inputBg.gif);background-repeat: no-repeat;background-position: right 11px;" placeholder="Last name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control input-lg" placeholder="Email Id">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" placeholder="Password">
+                        </div>
+                        <div class="smallText">
+                            By signing up, I agree to Gearide's <a href="#">Terms of Service</a> and <a href="#" data-popup="true">Privacy Policy</a>.
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-lg btn-learn btn-block">Sign Up</button>
+                        </div>
+                        <hr/>
+                        <div class="smallText">
+                            Already a Member?<a data-toggle="modal" data-dismiss="modal" data-target="#loginModal">Log In</a>
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span><span class="sr-only">Close</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/modal-->
+    <!--modal login-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="">
+                        <div class="">
+                            <div class="">
+                                <button type="button" class="btn partyLogin btn-primary btn-block">Facebook</button>
+                            </div>
+                            <br/>
+                            <div class="">
+                                <button type="button" class="btn partyLogin btn-danger btn-block">Google+</button>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <input type="email" class="form-control input-lg"  placeholder="Email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" placeholder="Password">
+                        </div>
+                        <div class="smallText">
+                            <label for="rememberMe" class=" ">
+                              <input type="checkbox" name="remember_me" id="rememberMe" value="true" class="remember_me">
+                              Remember me
+                            </label>
+                            <a href="#" class="forgot-password pull-right">Forgot password?</a>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-lg btn-learn btn-block">Log In</button>
+                        </div>
+                        <hr/>
+                        <div class="smallText">
+                            Don't have an account?<a data-toggle="modal" data-dismiss="modal" data-target="#signupModal ">Sign Up</a>
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span><span class="sr-only">Close</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/modal-->
+</div>
+<div class="checkout">
+    <div class="container">
+        <h2>Cart Summary</h2>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cartwrapper">
+                    <div class="duration">
+                        <span class="date">
+                            <i class="fa fa-calendar"></i>
+                            <label>12th Oct,</label> 01:00 PM
+                            <i>to</i>
+                            <label>13th Oct,</label> 01:00 PM
+                        </span>
+                        <span class="totaltime">
+                            <i class="fa fa-clock-o"></i>
+                            <label>2</label> Days
+                            <label>3</label> Hours
+                        </span>
+                    </div>
+                    <div class="itemwrap row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <img src="/static/images/activa.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <h4>Activa</h4>
+                            <label><i class="fa fa-map-marker"></i> Indiranagar (Metro Parking), Bangalore</label>
+                            
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8">
+                            <h6>Quantity</h6>
+                            <input type="number" min="0" max="3" value="1">
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            <h6>Total</h6>
+                            <div class="total">
+                                <span class="rs">₹ </span><span><b>650</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="itemwrap row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <img src="/static/images/activa.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <h4>Activa</h4>
+                            <label><i class="fa fa-map-marker"></i> Indiranagar (Metro Parking), Bangalore</label>
+                            
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8">
+                            <h6>Quantity</h6>
+                            <input type="number" min="0" max="3" value="1">
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            <h6>Total</h6>
+                            <div class="total">
+                                <span class="rs">₹ </span><span><b>650</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="itemwrap row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <img src="/static/images/activa.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <h4>Activa</h4>
+                            <label><i class="fa fa-map-marker"></i> Indiranagar (Metro Parking), Bangalore</label>
+                            
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8">
+                            <h6>Quantity</h6>
+                            <input type="number" min="0" max="3" value="1">
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            <h6>Total</h6>
+                            <div class="total">
+                                <span class="rs">₹ </span><span><b>650</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="itemwrap row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <img src="/static/images/activa.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <h4>Activa</h4>
+                            <label><i class="fa fa-map-marker"></i> Indiranagar (Metro Parking), Bangalore</label>
+                            
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8">
+                            <h6>Quantity</h6>
+                            <input type="number" min="0" max="3" value="1">
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            <h6>Total</h6>
+                            <div class="total">
+                                <span class="rs">₹ </span><span><b>650</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cartwrapper">
+                    <div class="duration"><label>NOTE</label></div>
+                    <div class="itemwrap row">
+                        <ul>
+                            <li>All members must be 21 years older (for Sports bike) and 18 years older (for street & cruiser Bike).</li>
+                            <li>All members must possess a Driver’s License (to drive a 2-wheeler with gears) issued by a Competent Authority in India OR an International Driver’s License (issued by the member’s home country)</li>
+                            <li>Members should not have committed a drugs or alcohol-related driving violations in the past 7 years.</li>
+                            <li>All payments shall be accepted only through credit card, debit card or online funds transfer.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="fare">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer starts-->
+{% include "footer.html" %}
+<!--footer ends-->
+    
+    
+    
+    <script src="/static/js/aos.js" type="text/javascript"></script>
+    <script src="/static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <script>
+    AOS.init();
+  </script>
+    <script type="text/javascript">
+    
+        $('.form_datetime').datetimepicker({
+            //language:  'fr',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1
+        });
+        $('.form_date').datetimepicker({
+            language:  'fr',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+        $('.form_time').datetimepicker({
+            language:  'fr',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 1,
+            minView: 0,
+            maxView: 1,
+            forceParse: 0
+        });
+    </script>
+    <script>
+        (function($) {
+            $.fn.spinner = function() {
+                this.each(function() {
+                    var el = $(this);
+        
+                    // add elements
+                    el.wrap('<span class="spinner"></span>');     
+                    el.before('<span class="sub">-</span>');
+                    el.after('<span class="add">+</span>');
+        
+                    // substract
+                    el.parent().on('click', '.sub', function () {
+                        if (el.val() > parseInt(el.attr('min')))
+                            el.val( function(i, oldval) { return --oldval; });
+                    });
+        
+                    // increment
+                    el.parent().on('click', '.add', function () {
+                        if (el.val() < parseInt(el.attr('max')))
+                            el.val( function(i, oldval) { return ++oldval; });
+                    });
+                });
+            };
+        })(jQuery);
+        
+        $('input[type=number]').spinner();
+    </script>
+    <script type="text/javascript">
+    
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36251023-1']);
+          _gaq.push(['_setDomainName', 'jqueryscript.net']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        
+    </script>
+</body>
+</html>
